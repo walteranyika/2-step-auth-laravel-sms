@@ -15,7 +15,9 @@ use AfricasTalking\SDK\AfricasTalking;
 
 Route::get('/', function () {
 
-        $username = env('SMS_USER');
+    //return session("names");
+    session(["names"=>"walter"]);
+       /* $username = env('SMS_USER');
         $apiKey   = env('SMS_KEY');
 
        // $username ='team001';
@@ -25,7 +27,7 @@ Route::get('/', function () {
         $result   = $sms->send([
             'to'      => '+254723740215',
             'message' => 'Happy Hello There'
-        ]);
+        ]);*/
         //dd($result);
 
     return view('welcome');

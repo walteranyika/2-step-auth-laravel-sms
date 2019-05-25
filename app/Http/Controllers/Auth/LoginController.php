@@ -54,10 +54,13 @@ class LoginController extends Controller
                 'user_id' => $user->id
             ]);
             if ($token->sendCode()) {
-                session()->set("token_id", $token->id);
-                session()->set("user_id", $user->id);
-                session()->set("remember", $request->get('remember'));
-               // dd("Validation passed");
+                //session()->set("token_id", $token->id);
+                //session()->set("user_id", $user->id);
+                //session()->set("remember", $request->get('remember'));
+                session(["token_id",$token->id]);
+                session(["user_id",$user->id]);
+                session(["remember",$request->get('remember')]);
+                dd(session());
                 return redirect("code");
 
             }
@@ -78,6 +81,7 @@ class LoginController extends Controller
 
     public function showCodeForm()
     {
+        dd(session("token_id"));
         if (! session()->has("token_id")) {
             return redirect("login");
         }
